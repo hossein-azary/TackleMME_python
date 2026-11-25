@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tacklemme"
+version = "0.1.0"
+description = "Python migration of the TackleMMe analysis pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cobra>=0.26",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+# compare_project_initialization.py needs the large MATLAB reference data; run it by hand
+python_files = ["test_*.py"]
